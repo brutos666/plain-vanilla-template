@@ -1,0 +1,54 @@
+html {
+    margin:    0 auto;
+    max-width: 800px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body {
+    font-family: var(--font-system);
+    font-weight: normal;
+    margin: 1.5em;
+}
+a, a:hover {
+    color: var(--link-color);
+}
+
+header {
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+h1, h2, h3, h4, p {
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    margin-top: 1em;
+}
+
+h3 {
+    margin-top: 1em;
+}
+
+ul {
+    padding-left: 2em;
+    margin-top: 0.5em;
+}
+
+ul ul {
+    margin-top: 0;
+}
+
+dl {
+    padding-left: 0;
+}
+
+dt {
+    margin: 0.5em 0;
+}
+
+dd {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
