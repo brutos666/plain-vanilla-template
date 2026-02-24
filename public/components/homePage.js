@@ -1,27 +1,25 @@
-import getHtmlView from './homeView-html.js';
+import createHomeView from '../views/homeView.js';
+
 /**
- * Fonction de création de la page principale
- * @param {*} props - Liste des fonctions à appeler lors de la survenue d'un événement
- * @property {object}  defaults               - The default values for parties.
- * @property {function}  defaults.onPaste    - Fonction à appeler lors d'un coller
- * @returns
+ * Cette classe est responsable de la création de la vue et de sa mise à jour.
+ * Elle contient les propriétés du modèle de la vue et c'est bien ici que le modèle doit être mis à jour.
+ * Lors de sa mise à jour, il doit indiquer à la vue de se mettre à jour.
+ * @returns la vue
  */
-function createHomeView(props) {
-  const root = document.createElement('div');
-  root.innerHTML = getHtmlView();
-
-  /** @HTMLTextAreaElement */
-  const inputTextArea = root.querySelector('#input');
-
-  inputTextArea.addEventListener('paste', props.onPaste);
-  inputTextArea.addEventListener('input', props.onInput);
-
-  const updateInputWithPast = (pasteText) => {
-    inputTextArea.value = 'Paste this:\n' + inputTextArea.value ;
-    return modifiedText;
+function createHomePage() {
+  const onPaste = (event) => {
+    const transfer = event.clipboardData || event.dataTransfer;
+    if (transfer.types.indexOf('text/html') > -1) {
+      var htmlText = transfer.getData('text/html'),
+        modifiedText = view.updateInputWithPast(htmlText);
+      // This is necessary to prevent the current document selection from being written to the clipboard.
+      event.preventDefault();
+    }
   };
 
-  return { root, updateInputWithPast };
+  const viewProps = { onPaste };
+  const view = createHomeView(viewProps);
+  return view;
 }
 
-export default createHomeView;
+export default createHomePage;
