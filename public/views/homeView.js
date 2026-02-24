@@ -14,7 +14,6 @@ function createHomeView(props) {
   const inputTextArea = root.querySelector('#input');
 
   inputTextArea.addEventListener('paste', props.onPaste);
-  inputTextArea.addEventListener('input', props.onInput);
 
   const updateInputWithPast = (pasteText) => {
     inputTextArea.value = 'Paste this:\n' + inputTextArea.value ;
